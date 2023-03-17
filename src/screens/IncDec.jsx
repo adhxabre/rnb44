@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Text, Pressable } from "native-base";
 
-export default function Hello({ navigation }) {
+export default function IncDec() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  function decrement() {
+    setCount(count - 1);
+  }
+
   return (
     <Box
-      bg="primary.800"
-      display="flex"
+      width="100%"
       height="100%"
-      alignItems="center"
+      bg="primary.800"
       justifyContent="center"
+      alignItems="center"
     >
-      <Text fontFamily="body" fontWeight={400} fontStyle="italic" fontSize={30}>
-        Life's too smart
-      </Text>
-      <Text fontFamily="body" fontWeight={400} fontStyle="italic" fontSize={16}>
-        Lifeindo Ltd.
-      </Text>
+      <Text fontSize="xl">{count}</Text>
 
       <Pressable
-        onPress={() => navigation.navigate("Form")}
+        onPress={increment}
         style={{
           backgroundColor: "white",
           height: 40,
@@ -29,10 +34,11 @@ export default function Hello({ navigation }) {
           margin: 20,
         }}
       >
-        <Text color="primary.800">Sign In</Text>
+        <Text color="primary.800">Inc</Text>
       </Pressable>
+
       <Pressable
-        onPress={() => navigation.navigate("IncDec")}
+        onPress={decrement}
         style={{
           backgroundColor: "white",
           height: 40,
@@ -43,7 +49,7 @@ export default function Hello({ navigation }) {
           margin: 20,
         }}
       >
-        <Text color="primary.800">Inc/Dec</Text>
+        <Text color="primary.800">Dec</Text>
       </Pressable>
     </Box>
   );
