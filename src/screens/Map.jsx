@@ -1,14 +1,31 @@
-import { View, Text } from "react-native";
+import { FlatList, View, Text } from "react-native";
 
 export default function Map() {
-  const cars = ["BMW", "Mercedes", "Lemberjember", "Fururri", "Tuyuta"];
+  const cars = [
+    { name: "BMW" },
+    { name: "Mercudu" },
+    { name: "Lemberjember" },
+    { name: "Fururri" },
+    { name: "Tuyuti" },
+    { name: "Tesla" },
+  ];
 
   return (
     <View>
       <Text>This is list on React Native</Text>
-      {cars.map((car, i) => (
-        <Text key={i}>{car}</Text>
-      ))}
+      <FlatList
+        data={cars}
+        renderItem={({ item }) => <CarList name={item.name} />}
+        keyExtractor={(item) => item.name}
+      />
+    </View>
+  );
+}
+
+function CarList(props) {
+  return (
+    <View>
+      <Text>{props.name}</Text>
     </View>
   );
 }
