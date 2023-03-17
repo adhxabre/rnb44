@@ -5,10 +5,12 @@ export default function IncDec() {
   const [count, setCount] = useState(0);
 
   function increment() {
+    if (count >= 50) return;
     setCount(count + 1);
   }
 
   function decrement() {
+    if (count === 0) return;
     setCount(count - 1);
   }
 
